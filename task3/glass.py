@@ -71,3 +71,4 @@ predicted_type = knn.predict(new_sample_scaled)
 
 print(f"Предсказанный тип стекла: {predicted_type[0]}")
 input()
+
