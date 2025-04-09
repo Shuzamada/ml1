@@ -6,12 +6,12 @@ from sklearn import svm
 from sklearn.metrics import confusion_matrix, accuracy_score
 
 # Загрузка данных
-data = pd.read_csv('svmdata_c.txt', sep='\t')
-test_data = pd.read_csv('svmdata_c_test.txt', sep='\t')
+data = pd.read_csv('svmdata_d.txt', sep='\t')
+test_data = pd.read_csv('svmdata_d_test.txt', sep='\t')
 
 # Подготовка данных
-X_train = data.iloc[:, :2].values  # Первые два столбца - X1 и X2
-y_train = data.iloc[:, 2].values   # Третий столбец - Colors
+X_train = data.iloc[:, :2].values
+y_train = data.iloc[:, 2].values
 X_test = test_data.iloc[:, :2].values
 y_test = test_data.iloc[:, 2].values
 
@@ -79,12 +79,6 @@ def visualize_svm(clf, X_train, y_train, X_test, y_test, title, filename_prefix)
     plt.show()
     
     return train_acc, test_acc
-
-# Линейное ядро
-clf_linear = svm.SVC(kernel='linear')
-clf_linear.fit(X_train, y_train)
-visualize_svm(clf_linear, X_train, y_train, X_test, y_test, 
-              "SVM с линейным ядром", "svm_linear")
 
 # Полиномиальные ядра разных степеней
 for degree in range(1, 6):
